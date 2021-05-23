@@ -1,18 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UsernameField
-from django.contrib.auth.models import User
+from . import models
 
 
-# Создаём класс формы
-class RegistrForm(UserCreationForm):
-    lastname = forms.CharField(max_length=80)
-    firstname = forms.CharField(max_length=80)
-    department_code = forms.CharField(max_length=80)
-    post = forms.CharField(max_length=80)
-
-    # Создаём класс Meta
+class UserRegistrationForm(forms.ModelForm):
     class Meta:
-        # Свойство модели User
-        model = User
-        # Свойство назначения полей
-        fields = ('lastname', 'firstname', 'department_code', 'post',)
+        model = models.CustomUser
+        fields = ('first_name', 'last_name', 'division_code_gosb', 'division_code_vsp', 'post')
