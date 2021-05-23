@@ -3,10 +3,13 @@ from django.shortcuts import render, redirect
 from . import models
 from . import forms
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 
 
 def registration(request):
+    if request.user.is_authenticated:
+        return redirect('user_info')
+
     if request.method == 'POST':
         user_form = forms.UserRegistrationForm(request.POST)
         if user_form.is_valid():
