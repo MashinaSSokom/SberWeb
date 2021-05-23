@@ -1,7 +1,12 @@
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 
 # Create your views here.
-from .forms import RegistrForm
+from .forms import RegistrForm, CustomAuthenticationForm
+
+
+class CustomLoginView(LoginView):
+    form_class = CustomAuthenticationForm
 
 
 # Функция регистрации
