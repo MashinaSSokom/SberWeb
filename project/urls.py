@@ -7,5 +7,6 @@ from django.contrib.auth import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('registration.urls'), name='accounts')
+    path('accounts/', include('registration.urls'), name='accounts'),
+    path('', RedirectView.as_view(pattern_name='registration'), name='home')
 ]
